@@ -55,6 +55,12 @@ describe('public methods', function() {
       volley.at('medium', {nextTick: false}, fn.listener);
       expect(fn.listener).toHaveBeenCalled();
     });
+
+    it('should trigger at next tick if a config object is passed, but nextTick is omitted', function(done) {
+      volley.at('medium', {fireOnSet: true}, fn.listener);
+      expect(fn.listener).not.toHaveBeenCalled();
+      checkIsCalled(done)
+    });
   });
 
   describe('below', function() {
@@ -87,6 +93,12 @@ describe('public methods', function() {
       volley.below('medium', {nextTick: false}, fn.listener);
       expect(fn.listener).toHaveBeenCalled();
     });
+
+    it('should trigger at next tick if a config object is passed, but nextTick is omitted', function(done) {
+      volley.below('medium', {fireOnSet: true}, fn.listener);
+      expect(fn.listener).not.toHaveBeenCalled();
+      checkIsCalled(done)
+    });
   });
 
   describe('above', function() {
@@ -118,6 +130,12 @@ describe('public methods', function() {
     it('should trigger immediately if nextTick is disabled', function() {
       volley.above('medium', {nextTick: false}, fn.listener);
       expect(fn.listener).toHaveBeenCalled();
+    });
+
+    it('should trigger at next tick if a config object is passed, but nextTick is omitted', function(done) {
+      volley.above('medium', {fireOnSet: true}, fn.listener);
+      expect(fn.listener).not.toHaveBeenCalled();
+      checkIsCalled(done)
     });
   });
 
@@ -160,6 +178,12 @@ describe('public methods', function() {
     it('should trigger immediately if nextTick is disabled', function() {
       volley.between('medium', 'large', {nextTick: false}, fn.listener);
       expect(fn.listener).toHaveBeenCalled();
+    });
+
+    it('should trigger at next tick if a config object is passed, but nextTick is omitted', function(done) {
+      volley.between('medium', 'large', {fireOnSet: true}, fn.listener);
+      expect(fn.listener).not.toHaveBeenCalled();
+      checkIsCalled(done)
     });
   });
 });
