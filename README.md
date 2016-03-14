@@ -21,30 +21,30 @@ your css with a couple of pseudo selectors on the body element as follows.
 
 ```css
   body:before {
-    content: "mobile";
+    content: "small";
     display: none;
   }
 
   body:after {
-    content: "mobile,tablet,computer,largeMonitor";
+    content: "small,medium,large,extralarge";
     display: none;
   }
 
   @media only screen and (min-width: 768px) {
     body:before {
-      content: "tablet";
+      content: "medium";
     }
   }
 
   @media only screen and (min-width: 922px) {
     body:before {
-      content: "computer";
+      content: "large";
     }
   }
 
   @media only screen and (min-width: 1200px) {
     body:before {
-      content: "largeMonitor";
+      content: "extralarge";
     }
   }
 ```
@@ -68,7 +68,7 @@ There are currently 2 options you can pass to the handler setting functions, the
 
 ##### fireOnSet [true]
 Should the handler function be triggered immediately after it is set, if the current
-breakpoint meets conditions of handler. True by default.
+breakpoint meets conditions of the handler. True by default.
 
 ##### nextTick [true]
 Should the handler be executed on the next JavaScript frame. True by default.
@@ -79,13 +79,13 @@ The `at` method is for setting handlers to execute at a specific breakpoint.
 ```js
 import volley from 'volley';
 
-volley.at('tablet', () => { /* handle tablet viewport */ });
+volley.at('medium', () => { /* handle medium viewport */ });
 
 // options as a second argument should you want/need to change them
 volley.at(
-  'tablet',
+  'medium',
   {fireOnSet: true, nextTick: true},
-  () => { /* handle tablet viewport */ }
+  () => { /* handle medium viewport */ }
 );
 ```
 
@@ -96,14 +96,14 @@ above (inclusive).
 ```js
 import volley from 'volley';
 
-// This will trigger for tablet, computer, and largeMonitor, but not mobile viewport
-volley.above('tablet', () => { /* handle tablet and above viewport */ });
+// This will trigger for medium, large, and extralarge, but not small viewport
+volley.above('medium', () => { /* handle medium and above viewport */ });
 
 // options as a second argument should you want/need to change them
 volley.above(
-  'tablet',
+  'medium',
   {fireOnSet: true, nextTick: true},
-  () => { /* handle tablet viewport */ }
+  () => { /* handle medium viewport */ }
 );
 ```
 
@@ -114,14 +114,14 @@ below (inclusive).
 ```js
 import volley from 'volley';
 
-// This will trigger for mobile and tablet, but not computer or largeMonitor viewports
-volley.below('tablet', () => { /* handle tablet and below viewport */ });
+// This will trigger for small and medium, but not large or extralarge viewports
+volley.below('medium', () => { /* handle medium and below viewport */ });
 
 // options as a second argument should you want/need to change them
 volley.below(
-  'tablet',
+  'medium',
   {fireOnSet: true, nextTick: true},
-  () => { /* handle tablet viewport */ }
+  () => { /* handle medium viewport */ }
 );
 ```
 
@@ -132,15 +132,15 @@ The `between` method is for setting handlers to execute between the stated break
 ```js
 import volley from 'volley';
 
-// This will trigger for tablet and computer, but not mobile or largeMonitor viewports
-volley.below('tablet', 'computer', () => { /* handle tablet and below viewport */ });
+// This will trigger for medium and large, but not small or extralarge viewports
+volley.below('medium', 'large', () => { /* handle medium and below viewport */ });
 
 // options as a second argument should you want/need to change them
 volley.below(
-  'tablet',
-  'computer'
+  'medium',
+  'large',
   {fireOnSet: true, nextTick: true},
-  () => { /* handle tablet viewport */ }
+  () => { /* handle medium viewport */ }
 );
 ```
 
