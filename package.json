@@ -1,6 +1,6 @@
 {
   "name": "volley",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JavaScript CSS breakpoint interpreter",
   "main": "lib/volley.js",
   "scripts": {
@@ -26,7 +26,6 @@
     "url": "https://github.com/afram/volley/issues"
   },
   "homepage": "https://github.com/afram/volley#readme",
-  "license": "MIT",
   "dependencies": {
     "lodash.debounce": "^4.0.3"
   },
