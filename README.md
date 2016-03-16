@@ -17,7 +17,9 @@ require the library with either webpack or browserify.
 
 ### CSS
 In order for Volley to read in your media queries, you need to first configure
-your css with a couple of pseudo selectors on the body element as follows.
+your css with a couple of pseudo selectors on the body element as follows. These values
+are for demonstration purposes, feel free to substitute with names and breakpoints that
+fit your project requirements.
 
 ```css
   body:before {
