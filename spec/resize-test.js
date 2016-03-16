@@ -18,21 +18,28 @@ function checkIsCalled(done) {
   setTimeout(function() {
     expect(fn.listener).toHaveBeenCalled();
     done();
-  }, 510);
+  }, 210);
+}
+
+function checkIsCalledWithEventObj(done) {
+  setTimeout(function() {
+    expect(fn.listener).toHaveBeenCalledWith(jasmine.any(Event));
+    done();
+  }, 210);
 }
 
 function checkNotCalled(done) {
   setTimeout(function() {
     expect(fn.listener).not.toHaveBeenCalled();
     done();
-  }, 510);
+  }, 210);
 }
 
 describe('resize', function() {
   beforeEach(function(done) {
     setBreakpoint('medium');
     triggerResizeEvent();
-    setTimeout(done, 510); // allow change to propagate through
+    setTimeout(done, 210); // allow change to propagate through
     fn = jasmine.createSpyObj('fn', ['listener']);
   });
 
@@ -59,6 +66,14 @@ describe('resize', function() {
       triggerResizeEvent();
       checkNotCalled(done);
     });
+
+    it('should pass the event object to the callback function when fired', function(done) {
+      volley.at('large', {fireOnSet: false, nextTick: false}, fn.listener);
+      expect(fn.listener).not.toHaveBeenCalled();
+      setBreakpoint('large');
+      triggerResizeEvent();
+      checkIsCalledWithEventObj(done);
+    });
   });
 
   describe('below', function() {
@@ -83,6 +98,14 @@ describe('resize', function() {
       setBreakpoint('extralarge');
       triggerResizeEvent();
       checkNotCalled(done);
+    });
+
+    it('should pass the event object to the callback function when fired', function(done) {
+      volley.below('large', {fireOnSet: false, nextTick: false}, fn.listener);
+      expect(fn.listener).not.toHaveBeenCalled();
+      setBreakpoint('large');
+      triggerResizeEvent();
+      checkIsCalledWithEventObj(done);
     });
   });
 
@@ -109,6 +132,14 @@ describe('resize', function() {
       triggerResizeEvent();
       checkNotCalled(done);
     });
+
+    it('should pass the event object to the callback function when fired', function(done) {
+      volley.above('small', {fireOnSet: false, nextTick: false}, fn.listener);
+      expect(fn.listener).not.toHaveBeenCalled();
+      setBreakpoint('large');
+      triggerResizeEvent();
+      checkIsCalledWithEventObj(done);
+    });
   });
 
   describe('between', function() {
@@ -133,6 +164,14 @@ describe('resize', function() {
       setBreakpoint('small');
       triggerResizeEvent();
       checkNotCalled(done);
+    });
+
+    it('should pass the event object to the callback function when fired', function(done) {
+      volley.between('small', 'extralarge', {fireOnSet: false, nextTick: false}, fn.listener);
+      expect(fn.listener).not.toHaveBeenCalled();
+      setBreakpoint('large');
+      triggerResizeEvent();
+      checkIsCalledWithEventObj(done);
     });
   });
 });
