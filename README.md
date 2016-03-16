@@ -73,70 +73,70 @@ breakpoint meets conditions of the handler. True by default.
 ##### nextTick [true]
 Should the handler be executed on the next JavaScript frame. True by default.
 
-#### at
-The `at` method is for setting handlers to execute at a specific breakpoint.
+#### triggerAt
+The `triggerAt` method is for setting handlers to execute at a specific breakpoint.
 
 ```js
 import volley from 'volley';
 
-volley.at('medium', (evt) => { /* handle medium viewport */ });
+volley.triggerAt('medium', (evt) => { /* handle medium viewport */ });
 
 // options as a second argument should you want/need to change them
-volley.at(
+volley.triggerAt(
   'medium',
   {fireOnSet: true, nextTick: true},
   () => { /* handle medium viewport */ }
 );
 ```
 
-#### above
-The `above` method is for setting handlers to execute at the stated breakpoint and
+#### triggerAtAndAbove
+The `triggerAtAndAbove` method is for setting handlers to execute at the stated breakpoint and
 above (inclusive).
 
 ```js
 import volley from 'volley';
 
 // This will trigger for medium, large, and extralarge, but not small viewport
-volley.above('medium', (evt) => { /* handle medium and above viewport */ });
+volley.triggerAtAndAbove('medium', (evt) => { triggerAtAndAbove });
 
 // options as a second argument should you want/need to change them
-volley.above(
+volley.triggerAtAndAbove(
   'medium',
   {fireOnSet: true, nextTick: true},
   () => { /* handle medium viewport */ }
 );
 ```
 
-#### below
-The `below` method is for setting handlers to execute at the stated breakpoint and
+#### triggerAtAndBelow
+The `triggerAtAndBelow` method is for setting handlers to execute at the stated breakpoint and
 below (inclusive).
 
 ```js
 import volley from 'volley';
 
 // This will trigger for small and medium, but not large or extralarge viewports
-volley.below('medium', (evt) => { /* handle medium and below viewport */ });
+volley.triggerAtAndBelow('medium', (evt) => { triggerAtAndBelow });
 
 // options as a second argument should you want/need to change them
-volley.below(
+volley.triggerAtAndBelow(
   'medium',
   {fireOnSet: true, nextTick: true},
   () => { /* handle medium viewport */ }
 );
 ```
 
-#### between
-The `between` method is for setting handlers to execute between the stated breakpoints
+#### triggerAtAndBetween
+The `triggerAtAndBetween` method is for setting handlers to execute between the stated breakpoints
 (inclusive).
 
 ```js
 import volley from 'volley';
 
 // This will trigger for medium and large, but not small or extralarge viewports
-volley.below('medium', 'large', (evt) => { /* handle medium and large viewport */ });
+volley.triggerAtAndBetween('medium', 'large', (evt) => { /* handle medium and large viewport */ });
 
 // options as a second argument should you want/need to change them
-volley.below(
+volley.triggerAtAndBetween(
   'medium',
   'large',
   {fireOnSet: true, nextTick: true},
