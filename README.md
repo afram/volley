@@ -59,7 +59,7 @@ is triggered, causing the JavaScript event handlers you set up to execute.
 ### Script
 With the CSS out of the way, you can now get right into using Volley. There are 5
 public methods available, `at`, `above`, `below`, `between`, and `getCurrentBreakpoint`.
-The first 5 are for setting handlers at specific breakpoints, while `getCurrentBreakpoint`
+The first 4 are for setting handlers at specific breakpoints, while `getCurrentBreakpoint`
 is for as you might expect, reading the current breakpoint.
 
 #### options
@@ -79,7 +79,7 @@ The `at` method is for setting handlers to execute at a specific breakpoint.
 ```js
 import volley from 'volley';
 
-volley.at('medium', () => { /* handle medium viewport */ });
+volley.at('medium', (evt) => { /* handle medium viewport */ });
 
 // options as a second argument should you want/need to change them
 volley.at(
@@ -97,7 +97,7 @@ above (inclusive).
 import volley from 'volley';
 
 // This will trigger for medium, large, and extralarge, but not small viewport
-volley.above('medium', () => { /* handle medium and above viewport */ });
+volley.above('medium', (evt) => { /* handle medium and above viewport */ });
 
 // options as a second argument should you want/need to change them
 volley.above(
@@ -115,7 +115,7 @@ below (inclusive).
 import volley from 'volley';
 
 // This will trigger for small and medium, but not large or extralarge viewports
-volley.below('medium', () => { /* handle medium and below viewport */ });
+volley.below('medium', (evt) => { /* handle medium and below viewport */ });
 
 // options as a second argument should you want/need to change them
 volley.below(
@@ -133,7 +133,7 @@ The `between` method is for setting handlers to execute between the stated break
 import volley from 'volley';
 
 // This will trigger for medium and large, but not small or extralarge viewports
-volley.below('medium', 'large', () => { /* handle medium and below viewport */ });
+volley.below('medium', 'large', (evt) => { /* handle medium and large viewport */ });
 
 // options as a second argument should you want/need to change them
 volley.below(
