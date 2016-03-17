@@ -2,6 +2,9 @@
 
 > A JavaScript CSS breakpoint interpreter
 
+[![npm version](https://badge.fury.io/js/volley.svg)](https://badge.fury.io/js/volley)
+[![Build Status](https://travis-ci.org/afram/volley.svg?branch=master)](https://travis-ci.org/afram/volley)
+
 Volley is for those times you need to trigger JavaScript functions when your responsive
 media queries fire. This library works with any grid, it reads your CSS, and it
 follows your naming conventions. There is no limit on the number of breakpoints
