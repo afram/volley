@@ -30,7 +30,7 @@ know (or submit a PR).
       3. [isLessThan](#islessthan---boolean)
       4. [isLessThanOrEqual](#islessthanorequal---boolean)
       5. [isEqual](#isequal---boolean)
-    3. [Getters](#getteres)
+    3. [Getters](#getters)
           1. [getCurrentBreakpoint](#getcurrentbreakpoint---string)
 
 ## Usage
