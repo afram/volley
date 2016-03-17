@@ -58,14 +58,13 @@ property contains all of your viewport width names in ascending order.
 When the viewport width changes, the content value changes, and the `resize` event
 is triggered, causing the JavaScript event handlers you set up to execute.
 
-### Script
-With the CSS out of the way, you can now get right into using Volley. There are 5
-public methods available, `at`, `above`, `below`, `between`, and `getCurrentBreakpoint`.
-The first 4 are for setting handlers at specific breakpoints, while `getCurrentBreakpoint`
-is for as you might expect, reading the current breakpoint.
+### API
+With the CSS out of the way, you can now get right into using Volley.
 
-#### options
-There are currently 2 options you can pass to the handler setting functions, they are
+#### Triggers
+
+##### options
+There are currently 2 options you can pass to the trigger functions, they are
 `fireOnSet` and `nextTick`.
 
 ##### fireOnSet [true]
@@ -75,7 +74,7 @@ breakpoint meets conditions of the handler. True by default.
 ##### nextTick [true]
 Should the handler be executed on the next JavaScript frame. True by default.
 
-#### triggerAt
+##### triggerAt
 The `triggerAt` method is for setting handlers to execute at a specific breakpoint.
 
 ```js
@@ -91,7 +90,7 @@ volley.triggerAt(
 );
 ```
 
-#### triggerAtAndAbove
+##### triggerAtAndAbove
 The `triggerAtAndAbove` method is for setting handlers to execute at the stated breakpoint and
 above (inclusive).
 
@@ -109,7 +108,7 @@ volley.triggerAtAndAbove(
 );
 ```
 
-#### triggerAtAndBelow
+##### triggerAtAndBelow
 The `triggerAtAndBelow` method is for setting handlers to execute at the stated breakpoint and
 below (inclusive).
 
@@ -127,7 +126,7 @@ volley.triggerAtAndBelow(
 );
 ```
 
-#### triggerAtAndBetween
+##### triggerAtAndBetween
 The `triggerAtAndBetween` method is for setting handlers to execute between the stated breakpoints
 (inclusive).
 
@@ -146,12 +145,94 @@ volley.triggerAtAndBetween(
 );
 ```
 
-#### getCurrentBreakpoint
-The `getCurrentBreakpoint` method is for retrieving the current breakpoint
-programmatically.
+##### Comparators
+For comparing the current breakpoint against the others
+
+#### isGreaterThan -> Boolean
+The `isGreaterThan` method is testing whether the current breakpoint is greater than
+the one to test against. It returns a Boolean, and will return false if the breakpoint
+to test against does not exist.
 
 ```js
 import volley from 'volley';
+// given that the current breakpoint is medium
 
-let breakpoint = volley.getCurrentBreakpoint();
+
+let breakpoint = volley.isGreaterThan('small'); // true
+let breakpoint = volley.isGreaterThan('medium'); // false
+let breakpoint = volley.isGreaterThan('nonexistent'); // false
+```
+
+##### isGreaterThanOrEqual -> Boolean
+The `isGreaterThanOrEqual` method is testing whether the current breakpoint is greater than
+or equal to the one to test against. It returns a Boolean, and will return false if the breakpoint
+to test against does not exist.
+
+```js
+import volley from 'volley';
+// given that the current breakpoint is medium
+
+
+let breakpoint = volley.isGreaterThanOrEqual('small'); // true
+let breakpoint = volley.isGreaterThanOrEqual('medium'); // true
+let breakpoint = volley.isGreaterThanOrEqual('large'); // false
+let breakpoint = volley.isGreaterThanOrEqual('nonexistent'); // false
+```
+
+##### isLessThan -> Boolean
+The `isLessThan` method is testing whether the current breakpoint is less than
+the one to test against. It returns a Boolean, and will return false if the breakpoint
+to test against does not exist.
+
+```js
+import volley from 'volley';
+// given that the current breakpoint is medium
+
+
+let breakpoint = volley.isLessThan('large'); // true
+let breakpoint = volley.isLessThan('medium'); // false
+let breakpoint = volley.isLessThan('nonexistent'); // false
+```
+
+##### isLessThanOrEqual -> Boolean
+The `isLessThanOrEqual` method is testing whether the current breakpoint is less than
+or equal to the one to test against. It returns a Boolean, and will return false if the breakpoint
+to test against does not exist.
+
+```js
+import volley from 'volley';
+// given that the current breakpoint is medium
+
+
+let breakpoint = volley.isLessThanOrEqual('large'); // true
+let breakpoint = volley.isLessThanOrEqual('medium'); // true
+let breakpoint = volley.isLessThanOrEqual('small'); // false
+let breakpoint = volley.isLessThanOrEqual('nonexistent'); // false
+```
+
+##### isEqual -> Boolean
+The `isEqual` method is testing whether the current breakpoint is equal to
+the one to test against. It returns a Boolean, and will return false if the breakpoint
+to test against does not exist.
+
+```js
+import volley from 'volley';
+// given that the current breakpoint is medium
+
+
+let breakpoint = volley.isEqual('large'); // false
+let breakpoint = volley.isEqual('medium'); // true
+let breakpoint = volley.isEqual('nonexistent'); // false
+```
+
+##### getCurrentBreakpoint -> String
+The `getCurrentBreakpoint` method is for retrieving the current breakpoint
+programmatically. It returns a String of the current breakpoint.
+
+```js
+import volley from 'volley';
+// given that the current breakpoint is medium
+
+
+let breakpoint = volley.getCurrentBreakpoint(); // "medium"
 ```
