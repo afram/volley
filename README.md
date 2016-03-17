@@ -11,27 +11,26 @@ Volley is written using commonjs with browserify/webpack in mind. If you
 think you'll find Volley useful as a standalone global library, please let me
 know (or submit a PR).
 
-### Table of contents
-1. [Usage](#usage)
-  1. [CSS](#css)
-  2. [API](#api)
-    1. [TRIGGERS](#triggers)
-    1. [Options](#options)
-    1. [fireOnSet](#fireonset-true)
-    2. [nextTick](#nexttick-true)
-    2. [Methods](#methods)
-      1. [triggerAt](#triggerat)
-      2. [triggerAtAndAbove](#triggeratandabove)
-      3. [triggerAtAndBelow](#triggeratandbelow)
-      4. [triggerAtAndBetween](#triggeratandbetween)
-    2. [COMPARATORS](#comparators)
-      1. [isGreaterThan](#isgreaterthan---boolean)
-      2. [isGreaterThanOrEqual](#isgreaterthanorequal---boolean)
-      3. [isLessThan](#islessthan---boolean)
-      4. [isLessThanOrEqual](#islessthanorequal---boolean)
-      5. [isEqual](#isequal---boolean)
-    3. [GETTERS](#getters)
-      1. [getCurrentBreakpoint](#getcurrentbreakpoint---string)
+- [Usage](#usage)
+  - [CSS](#css)
+  - [API](#api)
+  - [Triggers](#triggers)
+    - [options](#options)
+    - [fireOnSet [true]](#fireonset-true)
+    - [nextTick [true]](#nexttick-true)
+    - [Methods](#methods)
+    - [triggerAt](#triggerat)
+    - [triggerAtAndAbove](#triggeratandabove)
+    - [triggerAtAndBelow](#triggeratandbelow)
+    - [triggerAtAndBetween](#triggeratandbetween)
+  - [Comparators](#comparators)
+    - [isGreaterThan -> Boolean](#isgreaterthan---boolean)
+    - [isGreaterThanOrEqual -> Boolean](#isgreaterthanorequal---boolean)
+    - [isLessThan -> Boolean](#islessthan---boolean)
+    - [isLessThanOrEqual -> Boolean](#islessthanorequal---boolean)
+    - [isEqual -> Boolean](#isequal---boolean)
+  - [Getters](#getters)
+    - [getCurrentBreakpoint -> String](#getcurrentbreakpoint---string)
 
 ## Usage
 Setting up Volley is simple. You need to configure a little bit of CSS, and then
@@ -169,7 +168,7 @@ volley.triggerAtAndBetween(
 );
 ```
 
-#### Comparators
+### Comparators
 For comparing the current breakpoint against the others
 
 #### isGreaterThan -> Boolean
