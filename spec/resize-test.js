@@ -1,16 +1,5 @@
 var volley = require('../lib/volley');
-
-var head = document.querySelector('body');
-var style = document.createElement('style');
-head.appendChild(style);
-
-function setBreakpoint(bp) {
-  style.innerHTML = 'body:before{ content: "' + bp + '"; }';
-}
-
-function triggerResizeEvent() {
-  window.dispatchEvent(new Event('resize'));
-}
+var helpers = require('./helpers');
 
 var fn;
 
@@ -37,49 +26,47 @@ function checkNotCalled(done) {
 
 describe('resize', function() {
   beforeEach(function(done) {
-    setBreakpoint('medium');
-    triggerResizeEvent();
-    setTimeout(done, 210); // allow change to propagate through
     fn = jasmine.createSpyObj('fn', ['listener']);
+    helpers.resetTestEnv('medium', done);
   });
 
   describe('triggerAt', function() {
     it('should not have its listeners triggered on resize breakpoint unchanged', function(done) {
       volley.triggerAt('medium', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      triggerResizeEvent();
+      helpers.triggerResizeEvent();
       checkNotCalled(done);
     });
 
     it('should have its listeners triggered on resize if match', function(done) {
       volley.triggerAt('large', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalled(done);
     });
 
     it('should not have its listeners triggered on resize if no match', function(done) {
       volley.triggerAt('large', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('small');
-      triggerResizeEvent();
+      helpers.setBreakpoint('small');
+      helpers.triggerResizeEvent();
       checkNotCalled(done);
     });
 
     it('should pass the event object to the callback function when fired', function(done) {
       volley.triggerAt('large', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalledWithEventObj(done);
     });
 
     it('should trigger listener using deprecated method', function(done) {
       volley.at('large', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalled(done);
     });
   });
@@ -88,39 +75,39 @@ describe('resize', function() {
     it('should not have its listeners triggered on resize breakpoint unchanged', function(done) {
       volley.triggerAtAndBelow('medium', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      triggerResizeEvent();
+      helpers.triggerResizeEvent();
       checkNotCalled(done);
     });
 
     it('should have its listeners triggered on resize if match', function(done) {
       volley.triggerAtAndBelow('large', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalled(done);
     });
 
     it('should not have its listeners triggered on resize if no match', function(done) {
       volley.triggerAtAndBelow('large', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('extralarge');
-      triggerResizeEvent();
+      helpers.setBreakpoint('extralarge');
+      helpers.triggerResizeEvent();
       checkNotCalled(done);
     });
 
     it('should pass the event object to the callback function when fired', function(done) {
       volley.triggerAtAndBelow('large', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalledWithEventObj(done);
     });
 
     it('should trigger listener using deprecated method', function(done) {
       volley.below('large', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalled(done);
     });
   });
@@ -129,39 +116,39 @@ describe('resize', function() {
     it('should not have its listeners triggered on resize breakpoint unchanged', function(done) {
       volley.triggerAtAndAbove('medium', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      triggerResizeEvent();
+      helpers.triggerResizeEvent();
       checkNotCalled(done);
     });
 
     it('should have its listeners triggered on resize if match', function(done) {
       volley.triggerAtAndAbove('small', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalled(done);
     });
 
     it('should not have its listeners triggered on resize if no match', function(done) {
       volley.triggerAtAndAbove('large', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('small');
-      triggerResizeEvent();
+      helpers.setBreakpoint('small');
+      helpers.triggerResizeEvent();
       checkNotCalled(done);
     });
 
     it('should pass the event object to the callback function when fired', function(done) {
       volley.triggerAtAndAbove('small', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalledWithEventObj(done);
     });
 
     it('should trigger listener using deprecated method', function(done) {
       volley.above('small', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalled(done);
     });
   });
@@ -170,39 +157,39 @@ describe('resize', function() {
     it('should not have its listeners triggered on resize breakpoint unchanged', function(done) {
       volley.triggerAtAndBetween('medium', 'medium', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      triggerResizeEvent();
+      helpers.triggerResizeEvent();
       checkNotCalled(done);
     });
 
     it('should have its listeners triggered on resize if match', function(done) {
       volley.triggerAtAndBetween('small', 'extralarge', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalled(done);
     });
 
     it('should not have its listeners triggered on resize if no match', function(done) {
       volley.triggerAtAndBetween('medium', 'extralarge', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('small');
-      triggerResizeEvent();
+      helpers.setBreakpoint('small');
+      helpers.triggerResizeEvent();
       checkNotCalled(done);
     });
 
     it('should pass the event object to the callback function when fired', function(done) {
       volley.triggerAtAndBetween('small', 'extralarge', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalledWithEventObj(done);
     });
 
     it('should trigger listener using deprecated method', function(done) {
       volley.between('small', 'extralarge', {fireOnSet: false, nextTick: false}, fn.listener);
       expect(fn.listener).not.toHaveBeenCalled();
-      setBreakpoint('large');
-      triggerResizeEvent();
+      helpers.setBreakpoint('large');
+      helpers.triggerResizeEvent();
       checkIsCalled(done);
     });
   });

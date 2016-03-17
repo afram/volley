@@ -1,4 +1,5 @@
 var volley = require('../lib/volley');
+var helpers = require('./helpers');
 var fn;
 
 function checkIsCalled(done) {
@@ -15,9 +16,10 @@ function checkNotCalled(done) {
   }, 0);
 }
 
-describe('public methods', function() {
-  beforeEach(function() {
+describe('triggers', function() {
+  beforeEach(function(done) {
     fn = jasmine.createSpyObj('fn', ['listener']);
+    helpers.resetTestEnv('medium', done);
   });
 
   it('should get current breakpoint value', function() {
