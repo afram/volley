@@ -12,6 +12,10 @@ function triggerResizeEvent() {
   window.dispatchEvent(new Event('resize'));
 }
 
+function triggerOrientationchangeEvent() {
+  window.dispatchEvent(new Event('orientationchange'));
+}
+
 function resetTestEnv(breakpoint, done) {
   setBreakpoint(breakpoint || 'medium');
   triggerResizeEvent();
@@ -20,4 +24,5 @@ function resetTestEnv(breakpoint, done) {
 
 module.exports.setBreakpoint = setBreakpoint;
 module.exports.triggerResizeEvent = triggerResizeEvent;
+module.exports.triggerOrientationchangeEvent = triggerOrientationchangeEvent;
 module.exports.resetTestEnv = resetTestEnv;
