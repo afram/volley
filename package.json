@@ -1,6 +1,6 @@
 {
   "name": "volley",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A JavaScript CSS breakpoint interpreter",
   "main": "lib/volley.js",
   "scripts": {
