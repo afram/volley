@@ -175,80 +175,117 @@ volley.triggerAtAndBetween(
 For comparing the current breakpoint against the others
 
 #### isGreaterThan -> Boolean
-The `isGreaterThan` method is testing whether the current breakpoint is greater than
-the one to test against. It returns a Boolean, and will return false if the breakpoint
-to test against does not exist.
+The `isGreaterThan` method is testing whether the first argument (breakpoint A) is greater than
+the second argument (breakpoint B). The first argument can be omitted, the current breakpoint
+is treated as the left hand of the expression when only one argument is passed in.
+`isGreaterThan` returns a Boolean, and will return false if either breakpoint does not exist.
 
 ```js
 import volley from 'volley';
 // given that the current breakpoint is medium
 
-
+// if only one arg, will test if currentBreakpoint > arg1
 let breakpoint = volley.isGreaterThan('small'); // true
 let breakpoint = volley.isGreaterThan('medium'); // false
 let breakpoint = volley.isGreaterThan('nonexistent'); // false
+
+// if 2 args, will test if arg1 > arg2
+let breakpoint = volley.isGreaterThan('medium', 'small'); // true
+let breakpoint = volley.isGreaterThan('medium','medium'); // false
+let breakpoint = volley.isGreaterThan('medium', 'nonexistent'); // false
+let breakpoint = volley.isGreaterThan('nonexistent', 'medium'); // false
 ```
 
 #### isGreaterThanOrEqual -> Boolean
-The `isGreaterThanOrEqual` method is testing whether the current breakpoint is greater than
-or equal to the one to test against. It returns a Boolean, and will return false if the breakpoint
-to test against does not exist.
+The `isGreaterThanOrEqual` method is testing whether the first argument (breakpoint A) is greater than
+or equal to the second argument (breakpoint B). The first argument can be omitted, the current breakpoint
+is treated as the left hand of the expression when only one argument is passed in.
+`isGreaterThanOrEqual` returns a Boolean, and will return false if either breakpoint does not exist.
 
 ```js
 import volley from 'volley';
 // given that the current breakpoint is medium
 
-
+// if only one arg, will test if currentBreakpoint >= arg1
 let breakpoint = volley.isGreaterThanOrEqual('small'); // true
 let breakpoint = volley.isGreaterThanOrEqual('medium'); // true
 let breakpoint = volley.isGreaterThanOrEqual('large'); // false
 let breakpoint = volley.isGreaterThanOrEqual('nonexistent'); // false
+
+// if 2 args, will test if arg1 >= arg2
+let breakpoint = volley.isGreaterThanOrEqual('medium', 'small'); // true
+let breakpoint = volley.isGreaterThanOrEqual('medium', 'medium'); // true
+let breakpoint = volley.isGreaterThanOrEqual('medium', 'large'); // false
+let breakpoint = volley.isGreaterThanOrEqual('medium', 'nonexistent'); // false
+let breakpoint = volley.isGreaterThanOrEqual('nonexistent', 'medium'); // false
 ```
 
 #### isLessThan -> Boolean
-The `isLessThan` method is testing whether the current breakpoint is less than
-the one to test against. It returns a Boolean, and will return false if the breakpoint
-to test against does not exist.
+The `isLessThan` method is testing whether the first argument (breakpoint A) is less than
+the second argument (breakpoint B). The first argument can be omitted, the current breakpoint
+is treated as the left hand of the expression when only one argument is passed in.
+`isLessThan` returns a Boolean, and will return false if either breakpoint does not exist.
 
 ```js
 import volley from 'volley';
 // given that the current breakpoint is medium
 
-
+// if only one arg, will test if currentBreakpoint < arg1
 let breakpoint = volley.isLessThan('large'); // true
 let breakpoint = volley.isLessThan('medium'); // false
 let breakpoint = volley.isLessThan('nonexistent'); // false
+
+// if 2 args, will test if arg1 < arg2
+let breakpoint = volley.isLessThan('medium', 'large'); // true
+let breakpoint = volley.isLessThan('medium', 'medium'); // false
+let breakpoint = volley.isLessThan('medium', 'nonexistent'); // false
+let breakpoint = volley.isLessThan('nonexistent', 'medium'); // false
 ```
 
 #### isLessThanOrEqual -> Boolean
-The `isLessThanOrEqual` method is testing whether the current breakpoint is less than
-or equal to the one to test against. It returns a Boolean, and will return false if the breakpoint
-to test against does not exist.
+The `isLessThanOrEqual` method is testing whether the first argument (breakpoint A) is less than
+or equal to the second argument (breakpoint B). The first argument can be omitted, the current breakpoint
+is treated as the left hand of the expression when only one argument is passed in.
+`isLessThanOrEqual` returns a Boolean, and will return false if either breakpoint does not exist.
 
 ```js
 import volley from 'volley';
 // given that the current breakpoint is medium
 
-
+// if only one arg, will test if currentBreakpoint <= arg1
 let breakpoint = volley.isLessThanOrEqual('large'); // true
 let breakpoint = volley.isLessThanOrEqual('medium'); // true
 let breakpoint = volley.isLessThanOrEqual('small'); // false
 let breakpoint = volley.isLessThanOrEqual('nonexistent'); // false
+
+// if 2 args, will test if arg1 <= arg2
+let breakpoint = volley.isLessThanOrEqual('medium', 'large'); // true
+let breakpoint = volley.isLessThanOrEqual('medium', 'medium'); // true
+let breakpoint = volley.isLessThanOrEqual('medium', 'small'); // false
+let breakpoint = volley.isLessThanOrEqual('medium', 'nonexistent'); // false
+let breakpoint = volley.isLessThanOrEqual('nonexistent', 'medium'); // false
 ```
 
 #### isEqual -> Boolean
-The `isEqual` method is testing whether the current breakpoint is equal to
-the one to test against. It returns a Boolean, and will return false if the breakpoint
-to test against does not exist.
+The `isEqual` method is testing whether the first argument (breakpoint A) is equal to
+the second argument (breakpoint B). The first argument can be omitted, the current breakpoint
+is treated as the left hand of the expression when only one argument is passed in.
+`isEqual` returns a Boolean, and will return false if either breakpoint does not exist.
 
 ```js
 import volley from 'volley';
 // given that the current breakpoint is medium
 
-
+// if only one arg, will test if currentBreakpoint === arg1
 let breakpoint = volley.isEqual('large'); // false
 let breakpoint = volley.isEqual('medium'); // true
 let breakpoint = volley.isEqual('nonexistent'); // false
+
+// if 2 args, will test if arg1 === arg2
+let breakpoint = volley.isEqual('medium', 'large'); // false
+let breakpoint = volley.isEqual('medium', 'medium'); // true
+let breakpoint = volley.isEqual('medium', 'nonexistent'); // false
+let breakpoint = volley.isEqual('nonexistent', 'medium'); // false
 ```
 
 ### Getters
