@@ -14,6 +14,8 @@ Volley is written using commonjs with browserify/webpack in mind. If you
 think you'll find Volley useful as a standalone global library, please let me
 know (or submit a PR).
 
+*Volley logo by NATAPON CHANTABUTR of the Noun Project
+
 - [Usage](#usage)
   - [CSS](#css)
   - [API](#api)
